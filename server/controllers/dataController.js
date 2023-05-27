@@ -17,6 +17,8 @@ dataController.fetchData = (req, res, next) => {
     amazon_domain: 'amazon.com',
   };
 
+  //store the data into a variable so we aren't logging through the data each request
+  const 
   // make the http GET request to Rainforest API
   axios
     .get('https://api.rainforestapi.com/request', { params })

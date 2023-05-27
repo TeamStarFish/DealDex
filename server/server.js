@@ -8,6 +8,8 @@ const apiRouter = require('./routes/api');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// default route handler
+
 // Leads us to the route handlers
 app.use('/', apiRouter);
 
