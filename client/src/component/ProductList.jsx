@@ -1,9 +1,18 @@
 import React from 'react';
+import ProductCard from './ProductCard.jsx';
 
-export default function ProductList() {
+export default function ProductList(props) {
+  const {product} = props;
+  let arr = ['size', 'pixels', 'girth', 'power', 'torque', 'acornsPerMinute'];
   return (
     <div>
-      <h1>product list</h1>
+      <h1>product category, drilled from main TV</h1>
+      {arr.map((ele, i) => (
+        <ProductCard 
+          key={i}
+          spec={ele}
+        />
+      ))}
     </div>
   );
 }
