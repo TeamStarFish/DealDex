@@ -30,7 +30,7 @@ app.post("/register", async (req,res)=>{
   try{
     const userDoc = new User.create({
       username,
-      password,
+      password, //need to add bcrypt
     });
     console.log("here---------" , userDoc)
     res.json(userDoc)
