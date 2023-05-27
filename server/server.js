@@ -4,13 +4,19 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const User = require('./models/User');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
-// app.use(cors());
+const salt = bcrypt.genSaltSync(10);
+
+//token for jwt later
+const secret = 'changjunpatrickdocortland';
 
 const app = express();
 // Router
 const apiRouter = require('./routes/api');
 
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -26,11 +32,11 @@ app.use('/', apiRouter);
 app.post('/register', async (req, res) => {
   const { username, password } = req.body;
   try {
-    const userDoc = new User.create({
-      username,
-      password, //need to add bcrypt
+    const userDoc = await User.create({
+      username: username,
+      password: bcrypt.hashSync(password, salt),
     });
-    console.log('here---------', userDoc);
+    // console.log("here---------" , userDoc)
     res.json(userDoc);
   } catch (err) {
     res.status(400).json(err.message);
@@ -40,8 +46,23 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
-    const userDoc = await User.find({ username });
+    const userDoc = await User.findOne({ username });
+    const verified = bcrypt.compareSync(password, userDoc.password);
     // const verified = //for bcrypt later
+
+    if (verified) {
+      console.log('verified');
+      //logges in with username, id, as `userInfo`***
+      jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
+        if (err) throw err;
+        res.cookie('token', token).json({
+          //sending userInfo to login page
+          id: userDoc._id,
+          username,
+          testSend: 'we in here',
+        });
+      });
+    }
 
     //need to fill this part.. cookies and jwt..
   } catch (err) {
@@ -49,6 +70,19 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.get('/profile', (req, res) => {
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, (err, info) => {
+    if (err) throw err;
+    res.json(info);
+  });
+});
+
+app.post('/logout', async (req, res) => {
+  res.cookie('token', '');
+});
+
+app.use('/', apiRouter);
 // Global error handler
 app.use((err, _req, res, _next) => {
   const defaultErr = {
