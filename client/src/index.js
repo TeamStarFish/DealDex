@@ -10,3 +10,15 @@ root.render(
     <App />
   </BrowserRouter>
 );
+
+
+/*
+
+  |-- index.js
+    |-- App.js
+      |--
+
+
+
+
+ */

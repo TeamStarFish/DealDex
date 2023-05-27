@@ -9,7 +9,7 @@ const User = require('./models/User')
 
 const app = express();
 // Router
-//const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +21,7 @@ mongoose.connect(
 );
 
 // Leads us to the route handlers
-//app.use('/', apiRouter);
+app.use('/', apiRouter);
 
 
 //route to /register
