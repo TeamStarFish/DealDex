@@ -1,18 +1,15 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-// const cors = require('cors');
-
-// app.use(cors());
 
 // Router
-//const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Leads us to the route handlers
-//app.use('/', apiRouter);
+app.use('/', apiRouter);
 
 // Global error handler
 app.use((err, _req, res, _next) => {
