@@ -8,17 +8,17 @@ export default function RegisterPage(){
     async function register(ev){
         ev.preventDefault();
 
-        const response = await fetch("http:localhost:3000/register", {
+        const response = await fetch("/register", {
             method:"POST",
-            body:JSON.stringify({username,password}),
-            header:{"Content-Type": "application/json"},
+            body:JSON.stringify({username , password}),
+            headers:{"Content-Type": "application/json"},
         })
-
-        if(response.status === 200){
-            alert("registration worked")
-        } else {
-            alert("registeration failed. try again")
-        }
+        
+      if(response.status == 200){
+        alert("success")
+      } else{
+        alert("Failure")
+    }
 
     }
 
@@ -33,7 +33,7 @@ export default function RegisterPage(){
                 onChange={(ev)=>setUserName(ev.target.value)}
                 />
                 <input
-                type="text"
+                type="password"
                 placeholder="password"    
                 value={password}
                 onChange={(ev)=>setPassword(ev.target.value)}
