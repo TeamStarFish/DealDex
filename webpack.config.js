@@ -4,7 +4,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './client/src/index.js',
   output: {
-    path: path.resolve(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/',
   },
@@ -15,8 +15,23 @@ module.exports = {
   ],
   devServer: {
     port: 8080,
+    
     proxy: {
-      '/api': 'localhost:3000',
+      '/api': {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "changeOrigin": true,
+    },
+      '/register': {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "changeOrigin": true,
+    },
+      '/login': {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "changeOrigin": true,
+    },
     },
     static: {
       directory: path.join(__dirname, './dist'),
