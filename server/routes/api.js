@@ -7,4 +7,4 @@ router.get('/api/request', dataController.fetchData, (req, res) => {
   res.status(200).json({ message: 'Fetched data successful' });
 });
 
-module.exports = router
+module.exports = router;

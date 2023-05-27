@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import Main from './container/Main.jsx'
+import Main from './container/Main.jsx';
 import FillerPage from './component/FillerPage.jsx';
 import RegisterPage from './component/RegisterPage';
 import LoginPage from './component/LoginPage';
+import { UserContextProvider } from './UserContext.js';
 
 export default function App() {
   //navbar here, above h1
   return (
-    <div>
+    <UserContextProvider>
       <h1>DealDex</h1>
       <Routes>
         {/* <Route index element={<FrontPage/ >} />  will start here */}
@@ -19,6 +20,6 @@ export default function App() {
       </Routes>
       <p>hello</p>
       <Main />
-    </div>
+    </UserContextProvider>
   );
 }
