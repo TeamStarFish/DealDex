@@ -51,9 +51,9 @@ module.exports = {
         },
       },
       {
-        test: /\.s?css/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.css$/i,
+        include: path.resolve(__dirname, './client/public'),
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg)$/i,
@@ -62,3 +62,11 @@ module.exports = {
     ],
   },
 };
+
+/*
+{
+        test: /\.s?css/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+*/

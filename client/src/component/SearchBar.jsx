@@ -24,7 +24,7 @@ export default function SearchBar(props) {
   // need actual name for api fetch req (end point)
   // 
   return (
-    <div>
+    <div className="flex-grow border border-blue-400 border-solid">
       <h1>this the search bar</h1>
       <ProductSpecifications />
     </div>

@@ -19,6 +19,7 @@ const apiRouter = require('./routes/api');
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.resolve(__dirname, '../public'))); //serve public files, images, css etc
 
 //connect to monogoDB
 mongoose.connect(
