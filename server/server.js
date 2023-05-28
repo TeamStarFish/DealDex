@@ -19,6 +19,7 @@ const apiRouter = require('./routes/api');
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser())
 
 //connect to monogoDB
 mongoose.connect(
@@ -70,13 +71,13 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.get('/profile', (req, res) => {
-  const { token } = req.cookies;
-  jwt.verify(token, secret, {}, (err, info) => {
-    if (err) throw err;
-    res.json(info);
-  });
-});
+// app.get('/profile',  (req, res) => {
+//   const { token } = req.cookies;
+//    jwt.verify(token, secret, {}, (err, info) => {
+//     if (err) throw err;
+//     res.json(info);
+//   });
+// });
 
 app.post('/logout', async (req, res) => {
   res.cookie('token', '');

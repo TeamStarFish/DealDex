@@ -11,16 +11,15 @@ export default function App() {
   //navbar here, above h1
   return (
     <UserContextProvider>
-      <h1>DealDex</h1>
       <Routes>
-        <Route path="/" element={<Navigation />} />
-        <Route index element={<FillerPage/ >} />  
-        {/* <Link to="/register">Testing Register</Link> */}
+        <Route path="/" element={<Navigation />}>
+
+        <Route index element={<Main />} />  
+
+        </Route>
         <Route path={'/register'} element={<RegisterPage />} />
         <Route path={'/login'} element={<LoginPage />} />
       </Routes>
-      <p>hello</p>
-      <Main />
     </UserContextProvider>
   );
 }

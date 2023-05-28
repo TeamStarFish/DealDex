@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {UserContext} from '../UserContext.js'
 import { Navigate } from "react-router-dom";
 
@@ -8,15 +8,15 @@ export default function Nav(){
         const {setUserInfo, userInfo} = useContext(UserContext)
 
         useEffect(()=>{
-            fetch('/profile', {
-                credentials: 'include'
-            }).then(res=> res.json().then(userInfo=>{
+            fetch('/login', {
+                credentials: 'include',
+            }).then((res)=> res.json().then((userInfo)=>{
                 setUserInfo(userInfo)
             }))
         },[])
 
         function logout(){
-            fetch("http://localhost:4000/logout", {
+            fetch("/logout", {
               credentials: 'include',
               method: 'POST',
             })
@@ -30,7 +30,7 @@ export default function Nav(){
             <header>
       <Link to="/" className="logo">
         {/*--------------------- Logo ---------------------*/}
-        Testing Testing Logo
+        DealDex
         
       </Link>
 
