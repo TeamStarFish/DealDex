@@ -1,7 +1,8 @@
 const { query } = require('express');
 const db = require('../models/itemModel');
 const axios = require('axios');
-import ProductModel from '../models/Product';
+
+// import ProductModel from './models/Product';
 
 // set up the request parameters
 

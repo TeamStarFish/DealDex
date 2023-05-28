@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import {UserContext} from './UserContext'
+import {UserContext} from '../UserContext.js'
 import { Navigate } from "react-router-dom";
 
 export default function Nav(){
@@ -30,7 +30,7 @@ export default function Nav(){
             <header>
       <Link to="/" className="logo">
         {/*--------------------- Logo ---------------------*/}
-        PetPals
+        Testing Testing Logo
         
       </Link>
 

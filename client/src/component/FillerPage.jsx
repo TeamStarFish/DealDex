@@ -8,9 +8,9 @@ export default function Filler() {
     <div>
       <h1>Testing</h1>
     
-      <Link to="/register">Register Test Link</Link> <br></br>
+      {/* <Link to="/register">Register Test Link</Link> <br></br>
       <Link to="/login">Login Test Link</Link> <br></br>
-      <Link to="/logout">Logout</Link>
+      <Link to="/logout">Logout</Link> */}
     </div>
   );
 }
