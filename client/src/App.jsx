@@ -11,7 +11,7 @@ export default function App() {
   //navbar here, above h1
   return (
     <UserContextProvider>
-      <h1>DealDex</h1>
+      <h1 class="text-3xl font-bold underline">DealDex</h1>
       <Routes>
         <Route path="/" element={<Navigation />} />
         <Route index element={<FillerPage/ >} />  
