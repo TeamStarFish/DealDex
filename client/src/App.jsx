@@ -4,7 +4,7 @@ import Main from './container/Main.jsx';
 import FillerPage from './component/FillerPage.jsx';
 import RegisterPage from './component/RegisterPage.jsx';
 import LoginPage from './component/LoginPage.jsx';
-import { UserContextProvider } from './UserContext.js';
+import { UserContextProvider } from './UserContext.jsx';
 import Navigation from './container/Navigation.jsx';
 
 export default function App() {

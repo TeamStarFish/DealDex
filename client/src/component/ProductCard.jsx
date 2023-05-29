@@ -15,7 +15,7 @@ export default function ProductCard(props) {
   console.log(keyArr);
 
   return (
-    <div className="border border-solid border-orange-400">
+    <div className="border border-solid border-orange-400 h-100 w-100">
       <h1>{name}</h1>
       <img className="object-scale-down h-48 w-48"
         src={imageURL}></img>
