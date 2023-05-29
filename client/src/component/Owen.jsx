@@ -6,7 +6,7 @@ import React from 'react';
  */
 export default function Owen() {
   return (
-    <div className="flex border border-blue-400 border-solid justify center justify-items-center content-center items-center self-center">
+    <div className="flex border border-blue-400 border-solid justify-center justify-items-center content-center items-center self-center">
       <img className="object-scale-down h-28"
         src="https://i.ibb.co/2gxfCKh/owen.png"
         id="owen"

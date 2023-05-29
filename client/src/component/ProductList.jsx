@@ -28,7 +28,7 @@ export default function ProductList(props) {
         <p className="border border-solid border-black text-center">
           {product + 's'}
         </p>
-          <div className="h-20 grid grid-cols-3 border-2 overflow-y-scroll border-solid border-purple-400 flex-grow justify-start items-start gap-8 m-4 flex-wrap">
+          <div className="h-20 grid grid-cols-3 border overflow-y-scroll border-solid border-purple-400 flex-grow justify-start items-start gap-8 m-4 flex-wrap">
             {arrNames.map((ele, i) => (
               <ProductCard
                 key={'prodcard' + i}
