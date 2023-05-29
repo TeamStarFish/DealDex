@@ -3,7 +3,7 @@ import ProductSpecifications from './ProductSpecifications.jsx'
 // import data fetching api
 
 export default function SearchBar(props) {
-  const {updateProduct, } = props;
+  const {updateProduct} = props;
   const [productOptions, setProductOption] = useState('');
 
   // use effect hook 
@@ -21,8 +21,22 @@ export default function SearchBar(props) {
     fetchProduct();
   }, [updateProduct])
 
-  const handleSelect = (event) => {
-    setProductOption(event.target.value);
+  const handleSelect = async (event) => {
+    
+    try {
+      setProductOption(event.target.value);
+  
+      // set up get request here
+      // should send the product category to the backend and return specs to be loaded on the search bar
+      const response = await axios.get('/api/category', {category: productOptions});
+      console.log(response);
+      // response should be an array of objects which are monitor listings
+      // send category type and response to product specs component for further rendering
+
+
+    } catch (error) {
+      console.log('Error sending product category to backend.');
+    }
   }
   //table format!!! what kind of data are we getting back? is it an object? an array? pref array tho
   // need actual name for api fetch req (end point)
@@ -43,12 +57,12 @@ export default function SearchBar(props) {
       </div>
       {productOptions === 'Computer Monitors' && (
         <div>
-          <ProductSpecifications monitorSpecs />
+          <ProductSpecifications productOptions={productOptions} />
         </div>
       )}
       {productOptions === 'TVs' && (
         <div>
-          <ProductSpecifications tvSpecs />
+          <ProductSpecifications productOptions response />
         </div>
       )}
       <div className="mt-auto w-full">
