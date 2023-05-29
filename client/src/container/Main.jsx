@@ -16,15 +16,15 @@ export default function Main() {
   }
 
   return (
-    <div> 
-      <div> 
+    <div className="border border-solid border-green-400 flex flex-grow bg-green-100"> 
+      <div className="flex flex-col flex-shrink border-solid border border-red-400 w-56"> 
         <SearchBar 
           updateProduct={updateProduct} 
           specs={specs}
           />
         <Owen/>
       </div>
-      <div> 
+      <div className="flex flex-grow border-solid border border-red-400"> 
         <ProductList 
           product={product}
           filteredHits={filteredHits}
