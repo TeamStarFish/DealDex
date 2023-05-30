@@ -89,7 +89,7 @@ app.use('/', apiRouter);
 // Global error handler
 app.use((err, _req, res, _next) => {
   const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
+    log: 'Express global error handler caught unknown middleware error',
     status: 400,
     message: { err: 'A global error occurred' },
   };
