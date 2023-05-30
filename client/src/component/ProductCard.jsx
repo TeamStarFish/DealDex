@@ -15,12 +15,12 @@ export default function ProductCard(props) {
   console.log(keyArr);
 
   return (
-    <div className="border border-solid border-orange-400">
-      <h1>{name}</h1>
-      <img className="object-scale-down h-48 w-48"
+    <div className="border border-solid border-orange-400 h-100 w-100">
+      <h1 className="text-center text-[24px]">{name}</h1>
+      <img className="object-scale-down h-64 w-64 block mx-auto"
         src={imageURL}></img>
-      <p>price: {'$'+ price}</p>
-      <div>
+      <p className="text-center text-[20px]">{'$'+ price}</p>
+      <div className="grid grid-cols-2 m-4">
         {spec.map((ele, i) => (
           <ProductCardSpecs
             key={keyArr[i]+i} 

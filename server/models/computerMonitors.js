@@ -1,4 +1,4 @@
-export const productData = {
+const productData = {
   request_info: {
     success: true,
     credits_used: 16,
@@ -861,6 +861,9 @@ export const productData = {
     ],
   },
   category_results: [
+    // INSERT INTO products VALUES  ('Computer Monitors', 'Sceptre 24" Professional Thin 75Hz 1080p LED Monitor 2x HDMI VGA Build-in Speakers, Machine Black (E248W-19203R Series)', 99.97, 24, 1080, 75);
+
+    // CREATE TABLE products (Category varchar(255), ProductName varchar(255), Price int, Size int, Resolution int, RefreshRate int);
     {
       position: 1,
       title:
@@ -1778,3 +1781,5 @@ export const productData = {
     },
   ],
 };
+
+module.exports = productData;
