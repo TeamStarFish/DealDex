@@ -5,6 +5,8 @@ import RegisterPage from './component/RegisterPage.jsx';
 import LoginPage from './component/LoginPage.jsx';
 import { UserContextProvider } from './UserContext.js';
 import { Header } from './Header.jsx';
+import { Meme } from './component/Meme.jsx';
+import Shrek from './shrekProfile.JPG'
 
 export default function App() {
   //navbar above h1
@@ -41,7 +43,12 @@ export default function App() {
 
             </main>
            } />
-          <Route path={'/meme'} element={<div></div>} />
+          <Route path={'/meme'} element={
+          <main>
+            <Header />
+            <p className="flex items-center justify-center"><strong>You can do it</strong></p>
+            <img className="flex items-center justify-center" src={Shrek}/>
+          </main>} />
 
         </Routes>
          
