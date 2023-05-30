@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "server": "nodemon server/server.js",
+    "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "startBoth": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open\" \"nodemon ./server/server.js\""
+    "dev": "webpack-dev-server --mode development --open --hot & nodemon ./server/server.js"
   },
   "keywords": [],
   "author": "Patrick, Chang, Jun, Cortland, Don",
