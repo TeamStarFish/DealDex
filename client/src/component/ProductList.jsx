@@ -7,6 +7,44 @@ export default function ProductList(props) {
   let arrNames = ['spicy tv', 'ginger tv', 'sporty tv', 'baby tv', 'posh tv', 'lol idk', 'giga tv', 'puny tv', 'hehe idk', 'giga tv', 'puny tv', 'hehe idk']
   let arrDummySpecs = [{sizeOfTV: 'huge'}, {pixels: 100000}, {girth: 'hella'}, {power: 9001}, {torque: 'idk tbh'}, {acornsPerMinute: 'ungodly amount'}];
 
+   /*
+
+    data = [
+      {
+        category: tv/monitor?
+        name of product: 
+        price: $10?
+        specs: [{sizeOfTV: 'huge'}, {pixels: 100000}, {girth: 'hella'},etc]
+      },
+      {
+        category: tv/monitor?
+        name of product: 
+        price: $10?
+        specs: [{sizeOfTV: 'huge'}, {pixels: 100000}, {girth: 'hella'},etc]
+      },
+      {
+        category: tv/monitor?
+        name of product: 
+        price: $10?
+        specs: [{sizeOfTV: 'huge'}, {pixels: 100000}, {girth: 'hella'},etc]
+      }
+    ]
+
+   */
+
+    
+  /*  
+
+    //stretch feature
+    need first fetch, sending back category: ie monitor,
+    need list of specs
+
+    //important
+    send back, category, min and max price, size, resolution, refresh rate,
+    and get back data that matches
+
+  */
+
   //maybe more like:
   /*
     response: [
