@@ -14,7 +14,7 @@ const secret = 'changjunpatrickdocortland';
 
 const app = express();
 // Router
-const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api.js');
 
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());

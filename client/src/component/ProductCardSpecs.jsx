@@ -4,9 +4,9 @@ export default function ProductCardSpecs(props) {
   //dummy props
   const { spec, specVal } = props;
   return (
-    <div>
-      <p><strong>{spec}</strong></p>
-      <p>{specVal[spec]}</p>
+    <div className="m-1">
+      <p className="text-center"><strong>{spec}</strong></p>
+      <p className="text-center">{specVal[spec]}</p>
     </div>
   );
 }

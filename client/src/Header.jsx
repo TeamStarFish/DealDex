@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useContext, useEffect } from "react"
-import { UserContext } from "./UserContext"
+import { UserContext } from "./UserContext.jsx"
 
 export function Header(){
     const {setUserInfo, userInfo} =useContext(UserContext)
