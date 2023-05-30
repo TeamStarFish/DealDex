@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function RefreshRate(props) {
 
-  const {monitorSpecs, tvSpecs} = props;
+  const {monitorSpecs} = props;
     // const [tvFPS, setTvFPS] = useState('');
     const [monitorFPS, setMonitorFPS] = useState('');
 
