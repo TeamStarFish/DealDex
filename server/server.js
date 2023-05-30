@@ -13,6 +13,7 @@ const salt = bcrypt.genSaltSync(10);
 const secret = 'changjunpatrickdocortland';
 
 const app = express();
+app.use(cors());
 // Router
 const apiRouter = require('./routes/api.js');
 
@@ -22,10 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(express.static(path.resolve(__dirname, '../public'))); //serve public files, images, css etc
 
-//connect to monogoDB
-mongoose.connect(
-  `mongodb+srv://testingdb:testingdb@cluster0.gs1nz9c.mongodb.net/`
-);
+//connect to monogoDB commenting out connect so we dont die
+// mongoose.connect(
+//   `mongodb+srv://testingdb:testingdb@cluster0.gs1nz9c.mongodb.net/`
+// );
 
 // Leads us to the route handlers
 app.use('/', apiRouter);
