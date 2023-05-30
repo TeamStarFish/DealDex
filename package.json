@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "react-scripts test",
+    "start": "webpack-dev-server --mode development --open",
     "server": "nodemon server/server.js",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open",
     "startBoth": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open\" \"nodemon ./server/server.js\""
   },
   "keywords": [],
