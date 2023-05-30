@@ -7,8 +7,9 @@ export default function Main() {
 
   // define state variable 
   const [product, setProduct] = useState('');
-  const [specs, setSpecs] = useState([]); // or {} depends on backend
+  const [specs, setSpecs] = useState([]); // or {} depends on backend 
   const [filteredHits, setFilteredHits] = useState([]); // or {} depends on backend
+
 
   // define function to update state variable
   const updateProduct = (data) => {
@@ -28,8 +29,59 @@ export default function Main() {
         <ProductList 
           product={product}
           filteredHits={filteredHits}
-         />
+        />
       </div>
     </div>
   )
 }
+
+
+
+
+
+
+
+
+/*
+import React, { useState } from 'react';
+
+const ParentComponent = () => {
+  const [data, setData] = useState('');
+
+  const handleDataChange = (childData) => {
+    setData(childData);
+  };
+
+  return (
+    <div>
+      <h1>Parent Component</h1>
+      <ChildComponent onDataChange={handleDataChange} />
+      <p>Data from child: {data}</p>
+    </div>
+  );
+};
+
+export default ParentComponent;
+
+
+
+/////////////////
+
+import React from 'react';
+
+const ChildComponent = ({ onDataChange }) => {
+  const sendDataToParent = () => {
+    const data = 'Hello from child!';
+    onDataChange(data);
+  };
+
+  return (
+    <div>
+      <h2>Child Component</h2>
+      <button onClick={sendDataToParent}>Send Data to Parent</button>
+    </div>
+  );
+};
+
+export default ChildComponent;
+*/

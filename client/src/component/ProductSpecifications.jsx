@@ -8,29 +8,28 @@ import RefreshRate from './Specs/RefreshRate.jsx';
 
 export default function ProductSpecifications(props) {
   // destructure product selection specs from props
-  const {productOptions, response} = props;
-  console.log('PRODUCT OPTIONS', productOptions);
+  const {productOptions, productData} = props;
   
   return (
     <div>
       <h1>productspecs! unpack them spec components</h1>
-      {productOptions === 'Monitors' && (
+      {productOptions === 'Computer Monitors' && (
         <div>
           <h2>Monitor Specs </h2>
-          <PriceMax></PriceMax>
-          <PriceMin></PriceMin>
-          <Size></Size>
-          <Resolution monitorSpecs></Resolution>
-          <RefreshRate monitorSpecs></RefreshRate>
+          <PriceMax />
+          <PriceMin />
+          <Size/>
+          <Resolution monitorSpecs />
+          <RefreshRate monitorSpecs />
           </div>
       )}
-      {productOptions === 'TVs' && (
+      {productOptions === 'TV' && (
         <div>
           <h2>TV Specs </h2>
-          <PriceMax></PriceMax>
-          <PriceMin></PriceMin>
-          <Size></Size>
-          <Resolution tvSpecs></Resolution>
+          <PriceMax />
+          <PriceMin />
+          <Size />
+          <Resolution tvSpecs />
           </div>
       )}
     </div>

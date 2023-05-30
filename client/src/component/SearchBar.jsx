@@ -3,41 +3,57 @@ import ProductSpecifications from './ProductSpecifications.jsx'
 // import data fetching api
 
 export default function SearchBar(props) {
-  const {updateProduct} = props;
+  const { updateProduct } = props;
   const [productOptions, setProductOption] = useState('');
-
+  let productData = [];
   // use effect hook 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        // placeholder for api fetch
-        const data = await fetchDataFromApi(); //fetchdatafromapi is placeholder
-        updateProduct(data);
-      } catch (error) {
-        console.log({error: error.message});
-      }
-    }
+  // useEffect(() => {
+  //   const fetchProduct = async () => {
+  //     try {
+  //       // placeholder for api fetch
+  //       const data = await fetchDataFromApi(); //fetchdatafromapi is placeholder
+  //       updateProduct(data);
+  //     } catch (error) {
+  //       console.log({error: error.message});
+  //     }
+  //   }
 
-    fetchProduct();
-  }, [updateProduct])
+  //   fetchProduct();
+  // }, [updateProduct])
 
   const handleSelect = async (event) => {
-    
-    try {
-      setProductOption(event.target.value);
-  
-      // set up get request here
-      // should send the product category to the backend and return specs to be loaded on the search bar
-      const response = await axios.get('/api/category', {category: productOptions});
-      console.log(response);
-      // response should be an array of objects which are monitor listings
-      // send category type and response to product specs component for further rendering
-
-
-    } catch (error) {
-      console.log('Error sending product category to backend.');
-    }
+    const selectedCategory = event.target.value;
+    setProductOption(event.target.value);
+    await handleData(selectedCategory);
   }
+
+  const handleData = async (selectedCategory) => {
+
+      try {
+        const response = await fetch('/api/category', {
+          method: 'POST',
+          // mode: 'no-cors',
+          body: JSON.stringify({category: selectedCategory}),
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+          }
+        });
+        const data = await response.json();
+        productData = data;
+        // response should be an array of objects which are monitor listings
+        // send category type and response to product specs component for further rendering
+        console.log(data);
+  
+  
+      } catch (error) {
+        console.log({
+          log: 'handleError',
+          status: 400,
+          message: 'blew up in handleData ', error
+        });
+      }
+    }
+    // test();}
   //table format!!! what kind of data are we getting back? is it an object? an array? pref array tho
   // need actual name for api fetch req (end point)
   // 
@@ -52,17 +68,17 @@ export default function SearchBar(props) {
         >
           <option value="">Select product</option>
           <option value="Computer Monitors">Monitors</option>
-          <option value="TVs">TVs</option>
+          <option value="TV">TVs</option>
         </select>
       </div>
       {productOptions === 'Computer Monitors' && (
         <div>
-          <ProductSpecifications productOptions={productOptions} />
+          <ProductSpecifications productOptions={productOptions} productData={productData} />
         </div>
       )}
-      {productOptions === 'TVs' && (
+      {productOptions === 'TV' && (
         <div>
-          <ProductSpecifications productOptions response />
+          <ProductSpecifications productOptions={productOptions} productData={productData} />
         </div>
       )}
       <div className="mt-auto w-full">
