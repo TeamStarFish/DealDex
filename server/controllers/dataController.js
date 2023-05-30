@@ -7,6 +7,7 @@ const axios = require('axios');
 const dataController = {};
 
 dataController.fetchProducts = async (req, res, next) => {
+  console.log('hello');
   const { category } = req.body;
 
   const queryStr = `

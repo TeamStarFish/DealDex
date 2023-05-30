@@ -20,6 +20,7 @@ const apiRouter = require('./routes/api.js');
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser())
 app.use(express.static(path.resolve(__dirname, '../public'))); //serve public files, images, css etc
 
 //connect to monogoDB commenting out connect so we dont die
@@ -72,9 +73,10 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.get('/profile', (req, res) => {
+app.get('/profile',  (req, res) => {
   const { token } = req.cookies;
-  jwt.verify(token, secret, {}, (err, info) => {
+  // res.json('ok')
+   jwt.verify(token, secret, {}, (err, info) => {
     if (err) throw err;
     res.json(info);
   });
@@ -88,7 +90,7 @@ app.use('/', apiRouter);
 // Global error handler
 app.use((err, _req, res, _next) => {
   const defaultErr = {
-    log: 'Global Error Invoked',
+    log: 'Express global error handler caught unknown middleware error',
     status: 400,
     message: { err: 'A global error occurred' },
   };
