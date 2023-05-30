@@ -49,7 +49,7 @@ export function Header(){
                 {/* if username  */} 
                 {username && (
                     <>
-                    <a href="" className="text-gray-800 hover:text-blue-500">Meme</a>
+                    <Link to="/meme" className="text-gray-800 hover:text-blue-500">Meme</Link>
                     <a href="" className="text-gray-800 hover:text-blue-500" onClick={logout}>Logout</a>
                     </>
                 )}

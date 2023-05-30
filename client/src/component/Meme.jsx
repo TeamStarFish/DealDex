@@ -1,9 +1,9 @@
 import React from "react"
-import shrekProfile from "../public/shrekProfile.JPG"
 export function Meme(){
     return(
         <div>
-            <img src={shrekPorfile}/>
+           <h1>test</h1>
+           <p>why</p>
         </div> 
     )
 }
