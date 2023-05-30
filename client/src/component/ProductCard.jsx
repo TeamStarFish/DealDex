@@ -2,39 +2,41 @@ import React from 'react';
 import ProductCardSpecs from './ProductCardSpecs.jsx';
 
 export default function ProductCard(props) {
-  //dummy props
-  const imageURL =
-    'https://images.unsplash.com/photo-1541562232579-512a21360020?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80';
-  const price = '100000'
-  const { name, spec } = props;
-  const keyArr = [];
-  spec.forEach(el => {
-    keyArr.push(Object.keys(el)[0]);
-  })
+  //dummy url for now
+  // const imageURL =
+  //   'https://images.unsplash.com/photo-1541562232579-512a21360020?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80';
+  const { name, price, specs, imageURL } = props;
 
-  console.log(keyArr);
+  // creating key array so we can use map to render the product card specs
+  // these show up underneath the product card name, image, and price
+  // this is not an ideal method but due for MVP purposes it's what we've got lol
+  let keyArr = [];
+  let results = [];
+  if(specs){
+    keyArr = Object.keys(specs);
+    // filter out the name, price, and category since these are already displayed
+    results = keyArr.filter(ele => ele !== 'img' && ele !== 'category' && ele !== 'price' && ele !== 'productname');
+  }
 
   return (
-    <div className="border border-solid border-orange-400 h-100 w-100">
+    <div className="h-100 w-100">
       <h1 className="text-center text-[24px]">{name}</h1>
       <img className="object-scale-down h-64 w-64 block mx-auto"
         src={imageURL}></img>
       <p className="text-center text-[20px]">{'$'+ price}</p>
       <div className="grid grid-cols-2 m-4">
-        {spec.map((ele, i) => (
+        {results.map((ele, i) => (
           <ProductCardSpecs
-            key={keyArr[i]+i} 
-            spec={keyArr[i]}
-            specVal={ele}
+            key={results[i]+i} 
+            spec={ele}
+            specVal={specs[ele]}
           />
         ))}
       </div>
     </div>
   );
 }
-//  let arrDummySpecs = [{sizeOfTV: 'huge'}, {pixels: 100000}, {girth: 'hella'}, {power: 9001}, {torque: 'idk tbh'}, {acornsPerMinute: 'ungodly amount'}];
 
-//potentially bulky css incoming
 
 /*    IDEAS
   NAME OF PRODUCT (MINUS WEIRD ASS TECH SPECS IN TITLE?)
@@ -44,6 +46,8 @@ export default function ProductCard(props) {
   specs bolded, and printed either in line or if we stick to 4 specs, we can do 4 corners of a div?
   space between for cards,
   overflow y axis
+
+  
 
   specs = [{"spec": "specValue"}, {"spec2: specValue2"}]
   or

@@ -4,32 +4,29 @@ import PriceMin from './Specs/PriceMin.jsx';
 import Size from './Specs/Size.jsx';
 import Resolution from './Specs/Resolution.jsx';
 import RefreshRate from './Specs/RefreshRate.jsx';
+// this has a lot of imports for now, would like to make this more modular in the future
 
 
 export default function ProductSpecifications(props) {
-  // destructure product selection specs from props
-  const {monitorSpecs, tvSpecs} = props;
-
+  const {product} = props;
+  
   return (
     <div>
-      <h1>productspecs! unpack them spec components</h1>
-      {monitorSpecs && (
+      {product === 'Computer Monitors' && (
         <div>
-          <h2>Monitor Specs </h2>
-          <PriceMax></PriceMax>
-          <PriceMin></PriceMin>
-          <Size></Size>
-          <Resolution monitorSpecs></Resolution>
-          <RefreshRate monitorSpecs></RefreshRate>
+          <PriceMax />
+          <PriceMin />
+          <Size/>
+          <Resolution monitorSpecs />
+          <RefreshRate monitorSpecs />
           </div>
       )}
-      {tvSpecs && (
+      {product === 'TVs' && (
         <div>
-          <h2>TV Specs </h2>
-          <PriceMax></PriceMax>
-          <PriceMin></PriceMin>
-          <Size></Size>
-          <Resolution tvSpecs></Resolution>
+          <PriceMax />
+          <PriceMin />
+          <Size />
+          <Resolution tvSpecs />
           </div>
       )}
     </div>

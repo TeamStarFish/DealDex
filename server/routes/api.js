@@ -7,7 +7,11 @@ const dataController = require('../controllers/dataController');
 //   res.status(200).json({ message: 'Fetched data successful' });
 // });
 
-router.get('/api/category', dataController.fetchProducts, (req, res) => {
+// router.get('/api/category', dataController.fetchProducts, (req, res) => {
+//   return res.status(200).json(res.locals.products);
+// });
+
+router.post('/api/category', dataController.fetchProducts, (req, res) => {
   return res.status(200).json(res.locals.products);
 });
 

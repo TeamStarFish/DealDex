@@ -13,18 +13,20 @@ const salt = bcrypt.genSaltSync(10);
 const secret = 'changjunpatrickdocortland';
 
 const app = express();
+app.use(cors());
 // Router
 const apiRouter = require('./routes/api.js');
 
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser())
 app.use(express.static(path.resolve(__dirname, '../public'))); //serve public files, images, css etc
 
-//connect to monogoDB
-mongoose.connect(
-  `mongodb+srv://testingdb:testingdb@cluster0.gs1nz9c.mongodb.net/`
-);
+//connect to monogoDB commenting out connect so we dont die
+// mongoose.connect(
+//   `mongodb+srv://testingdb:testingdb@cluster0.gs1nz9c.mongodb.net/`
+// );
 
 // Leads us to the route handlers
 app.use('/', apiRouter);
@@ -71,9 +73,10 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.get('/profile', (req, res) => {
+app.get('/profile',  (req, res) => {
   const { token } = req.cookies;
-  jwt.verify(token, secret, {}, (err, info) => {
+  // res.json('ok')
+   jwt.verify(token, secret, {}, (err, info) => {
     if (err) throw err;
     res.json(info);
   });
@@ -87,7 +90,7 @@ app.use('/', apiRouter);
 // Global error handler
 app.use((err, _req, res, _next) => {
   const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
+    log: 'Express global error handler caught unknown middleware error',
     status: 400,
     message: { err: 'A global error occurred' },
   };
