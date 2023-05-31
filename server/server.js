@@ -2,10 +2,11 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const cors = require('cors');
 const User = require('./models/User');
-const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
+
+// Unused stuff?
+// const cors = require('cors');
+// const jwt = require('jsonwebtoken');
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -13,14 +14,14 @@ const salt = bcrypt.genSaltSync(10);
 const secret = 'changjunpatrickdocortland';
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 // Router
 const apiRouter = require('./routes/api.js');
 
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+// app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser())
+
 app.use(express.static(path.resolve(__dirname, '../public'))); //serve public files, images, css etc
 
 //connect to monogoDB commenting out connect so we dont die
@@ -46,45 +47,45 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  try {
-    const userDoc = await User.findOne({ username });
-    const verified = bcrypt.compareSync(password, userDoc.password);
-    // const verified = //for bcrypt later
+// app.post('/login', async (req, res) => {
+//   const { username, password } = req.body;
+//   try {
+//     const userDoc = await User.findOne({ username });
+//     const verified = bcrypt.compareSync(password, userDoc.password);
+//     // const verified = //for bcrypt later
 
-    if (verified) {
-      console.log('verified');
-      //logges in with username, id, as `userInfo`***
-      jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
-        if (err) throw err;
-        res.cookie('token', token).json({
-          //sending userInfo to login page
-          id: userDoc._id,
-          username,
-          testSend: 'we in here',
-        });
-      });
-    }
+//     if (verified) {
+//       console.log('verified');
+//       //logges in with username, id, as `userInfo`***
+//       jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
+//         if (err) throw err;
+//         res.cookie('token', token).json({
+//           //sending userInfo to login page
+//           id: userDoc._id,
+//           username,
+//           testSend: 'we in here',
+//         });
+//       });
+//     }
 
-    //need to fill this part.. cookies and jwt..
-  } catch (err) {
-    res.status(400).json('wrong password or username');
-  }
-});
+//     //need to fill this part.. cookies and jwt..
+//   } catch (err) {
+//     res.status(400).json('wrong password or username');
+//   }
+// });
 
-app.get('/profile',  (req, res) => {
-  const { token } = req.cookies;
-  // res.json('ok')
-   jwt.verify(token, secret, {}, (err, info) => {
-    if (err) throw err;
-    res.json(info);
-  });
-});
+// app.get('/profile', (req, res) => {
+//   const { token } = req.cookies;
+//   // res.json('ok')
+//   jwt.verify(token, secret, {}, (err, info) => {
+//     if (err) throw err;
+//     res.json(info);
+//   });
+// });
 
-app.post('/logout', async (req, res) => {
-  res.cookie('token', '');
-});
+// app.post('/logout', async (req, res) => {
+//   res.cookie('token', '');
+// });
 
 app.use('/', apiRouter);
 // Global error handler
