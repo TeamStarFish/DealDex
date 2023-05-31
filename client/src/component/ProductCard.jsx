@@ -1,5 +1,4 @@
-import React from "react";
-import ProductCardSpecs from "./ProductCardSpecs.jsx";
+import React from 'react';
 
 export default function ProductCard(props) {
   //dummy url for now
@@ -16,27 +15,31 @@ export default function ProductCard(props) {
     // filter out the name, price, and category since these are already displayed
     results = keyArr.filter(
       (ele) =>
-        ele !== "img" &&
-        ele !== "category" &&
-        ele !== "price" &&
-        ele !== "productname"
+        ele !== 'img' &&
+        ele !== 'category' &&
+        ele !== 'price' &&
+        ele !== 'productname'
     );
   }
 
   return (
-    <div className='h-100 w-100'>
-      <h1 className='text-center text-[24px]'>{name}</h1>
+    <div className="h-100 w-100">
+      <h1 className="text-center text-[24px] overflow-hidden line-clamp-2 hover:line-clamp-none">
+        {name}
+      </h1>
       <img
-        className='object-scale-down h-64 w-64 block mx-auto'
-        src={imageURL}></img>
-      <p className='text-center text-[20px]'>{"$" + price}</p>
-      <div className='grid grid-cols-2 m-4'>
+        className="object-scale-down h-64 w-64 block mx-auto"
+        src={imageURL}
+      ></img>
+      <p className="text-center text-[20px]">{'$' + price}</p>
+      <div className="grid grid-cols-3 m-4">
         {results.map((ele, i) => (
-          <ProductCardSpecs
-            key={results[i] + i}
-            spec={ele}
-            specVal={specs[ele]}
-          />
+          <div className="m-1">
+            <p className="text-center">
+              <strong>{ele}</strong>
+            </p>
+            <p className="text-center">{specs[ele]}</p>
+          </div>
         ))}
       </div>
     </div>
