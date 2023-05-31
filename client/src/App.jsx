@@ -6,18 +6,18 @@ import { Header } from "./Header.jsx";
 export default function App() {
   //navbar above h1
   return (
-    <div className='flex flex-col h-screen border-2 border-solid border-orange-400'>
+    <div>
       <Routes>
         <Route
           index
           element={
-            <main>
+            <main className='flex flex-col h-screen '>
               <Header />
-              <div className='flex items-center justify-center'>
+              {/* <div className='flex items-center justify-center'>
                 <p className='text-2xl text-center font-bold'>
                   <strong>DealDex we find the best deal</strong>
                 </p>
-              </div>
+              </div> */}
               <Main />
             </main>
           }
