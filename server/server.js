@@ -6,6 +6,7 @@ const PORT = 3000
 // Router
 const apiRouter = require('./routes/apiRouter.js');
 const authRouter = require('./routes/authRouter.js')
+const scraperRouter = require('./routes/scraperRouter.js')
 
 const app = express();
 
@@ -19,6 +20,8 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 app.use('/api', apiRouter);
 
 app.use('/auth', authRouter);
+
+app.use('/scraper', scraperRouter);
 
 // Catch all
 app.use('*', (req, res) => {

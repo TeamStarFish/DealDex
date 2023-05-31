@@ -6,7 +6,6 @@ const db = require('../models/itemModel');
 const productController = {};
 
 productController.fetchProducts = async (req, res, next) => {
-  console.log('hello');
   const { category } = req.body;
 
   const queryStr = `
@@ -19,7 +18,7 @@ productController.fetchProducts = async (req, res, next) => {
     return next();
   } catch (err) {
     return next({
-      log: 'fetchProducts ',
+      log: 'fetchProducts',
       status: 400,
       message: `Error in returning fetched Product, ${err}`,
     });
