@@ -22,11 +22,13 @@ export default function Main() {
     const dummyObj = {};
     dummyObj[key] = event.target.value;
     const newUserFilters = Object.assign({}, userFilters, dummyObj);
+    console.log('NewUserFilters', newUserFilters)
     setUserFilters(newUserFilters);
   }
 
   const handleSelect = async (event) => {
     const selectedCategory = event.target.value;
+    console.log('selected category ', selectedCategory)
     setProduct(event.target.value);
 
     try {
@@ -58,7 +60,7 @@ export default function Main() {
         <SearchBar 
           handleSelect={handleSelect}
           product={product}
-          specs={specs}
+          // specs={specs}
           updateFilter={updateFilter}
           />
         <Owen/>

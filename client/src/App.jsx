@@ -29,7 +29,7 @@ export default function App() {
             </main>
           } />
 
-          <Route path={'/login'} element = {
+          {/* <Route path={'/login'} element = {
             <main>
               <Header />
               <LoginPage />
@@ -48,7 +48,7 @@ export default function App() {
             <Header />
             <p className="flex items-center justify-center"><strong>You can do it</strong></p>
             <img className="flex items-center justify-center" src={Shrek}/>
-          </main>} />
+          </main>} /> */}
 
         </Routes>
          

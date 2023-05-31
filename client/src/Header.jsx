@@ -25,13 +25,13 @@ export function Header() {
   //     );
   //   }, []);
 
-  function logout() {
-    fetch('/logout', {
-      credentials: 'include',
-      method: 'POST',
-    });
-    setUserInfo(null);
-  }
+  // function logout() {
+  //   fetch('/logout', {
+  //     credentials: 'include',
+  //     method: 'POST',
+  //   });
+  //   setUserInfo(null);
+  // }
 
   const username = userInfo?.username;
 
@@ -52,7 +52,7 @@ export function Header() {
         </Link>
         <nav className="space-x-4">
           {/* if username  */}
-          {username && (
+          {/* {username && (
             <>
               <Link to="/meme" className="text-gray-800 hover:text-blue-500">
                 Meme
@@ -65,8 +65,8 @@ export function Header() {
                 Logout
               </a>
             </>
-          )}
-          {!username && (
+          )} */}
+          {/* {!username && (
             <>
               <Link className="text-gray-800 hover:text-blue-500" to="/login">
                 Login
@@ -78,7 +78,7 @@ export function Header() {
                 Register
               </Link>
             </>
-          )}
+          )} */}
         </nav>
       </header>
     </div>
