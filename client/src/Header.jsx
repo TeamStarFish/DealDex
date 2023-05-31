@@ -1,20 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
-import { UserContext } from './UserContext.jsx';
+import React from "react";
+import { Link } from "react-router-dom";
 
 export function Header() {
-  const { setUserInfo, userInfo } = useContext(UserContext);
-
   const headerStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   };
-  const loginNavStyle = {
-    marigin: '10px',
-  };
+  // const loginNavStyle = {
+  //   marigin: "10px",
+  // };
   //   useEffect(() => {
   //     fetch('/login', {
   //       credentials: 'include',
@@ -33,24 +29,23 @@ export function Header() {
   //   setUserInfo(null);
   // }
 
-  const username = userInfo?.username;
+  // const username = userInfo?.username;
 
   return (
-    <div className="bg-white shadow">
+    <div className='bg-white shadow'>
       <header
-        className="container mx-auto flex justify-between items-center py-2 px-4"
-        style={headerStyle}
-      >
-        <Link to="/" className="text-2xl font-bold text-gray-800">
+        className='container mx-auto flex justify-between items-center py-2 px-4'
+        style={headerStyle}>
+        <Link to='/' className='text-2xl font-bold text-gray-800'>
           <img
-            className="object-scale-down h-11"
-            src="https://i.ibb.co/2gxfCKh/owen.png"
-            id="owen"
-            alt="owen"
-            border="0"
+            className='object-scale-down h-11'
+            src='https://i.ibb.co/2gxfCKh/owen.png'
+            id='owen'
+            alt='owen'
+            border='0'
           />
         </Link>
-        <nav className="space-x-4">
+        <nav className='space-x-4'>
           {/* if username  */}
           {/* {username && (
             <>
