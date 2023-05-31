@@ -10,7 +10,7 @@ const productController = require('../controllers/productController');
 //   return res.status(200).json(res.locals.products);
 // });
 
-router.post('/category', productController.fetchProducts, (req, res) => {
+router.post('/search', productController.fetchProducts, (req, res) => {
   return res.status(200).json(res.locals.products);
 });
 

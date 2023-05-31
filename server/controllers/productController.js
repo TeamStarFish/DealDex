@@ -5,7 +5,8 @@ const data = require("./TEST_DATA");
 const productController = {};
 
 productController.fetchProducts = async (req, res, next) => {
-  const search = req.body.search.replace(/\s/g, "%20");
+  // const search = req.body.search.replace(/\s/g, "%20");
+  const { search } = req.body;
 
   const url = `https://real-time-product-search.p.rapidapi.com/search?q=${search}&country=us&language=en&sort_by=TOP_RATED`;
   const options = {
@@ -18,7 +19,7 @@ productController.fetchProducts = async (req, res, next) => {
 
   try {
     const response = await fetch(url, options);
-    const result = await response.text();
+    const result = await response.json();
     // console.log(result);
 
     res.locals.products = result.data.map((product) => {
@@ -36,15 +37,13 @@ productController.fetchProducts = async (req, res, next) => {
 
     next();
   } catch (error) {
-    console.error(error);
+    return next({
+      log: 'Error in productController fetching to API',
+      status: 400,
+      message: { err: 'Error in productController fetching to API' }
+    });
   }
 }
 
-// product_title
-// product_photos[0]
-// offer.store_name
-// offer.offer_page_url
-// offer.price
-// offer.product_condition
 
 module.exports = productController;

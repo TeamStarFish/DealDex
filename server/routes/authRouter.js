@@ -1,5 +1,38 @@
 const express = require('express');
+const { UNSAFE_NavigationContext } = require('react-router-dom');
 const router = express.Router();
+const userController = require('../controllers/userController')
+
+
+
+
+router.post('/register', userController.register, (req, res, next) => {
+  res.status(200).json(res.locals.userDoc)
+})
+
+router.post('/login', userController.login, (req, res, next) => {
+  res.status(200).json(res.locals.user)
+})
+
+router.post('/favorites', userController.addFavorites, (req, res, next) => {
+  res.status(200).send('added to favorites')
+})
+
+router.post('/favorites', userController.getFavorites, (req, res, next) => {
+  res.status(200).json(res.locals.favorites)
+})
+
+
+
+// router.get('/profile', userController.profile, (req, res, next) => {
+  // res.status(200).json(res.locals.userDoc)
+// })
+
+// app.post('/logout', async (req, res) => {
+//   res.cookie('token', '');
+// });
+
+
 
 //route to /register
 // app.post('/register', async (req, res) => {
