@@ -22,12 +22,12 @@ module.exports = {
         "secure": false,
         "changeOrigin": true,
     },
-      '/register': {
+      '/auth': {
         "target": "http://localhost:3000",
         "secure": false,
         "changeOrigin": true,
     },
-      '/login': {
+      '/scraper': {
         "target": "http://localhost:3000",
         "secure": false,
         "changeOrigin": true,
