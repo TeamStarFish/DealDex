@@ -5,7 +5,7 @@ import RegisterPage from './component/RegisterPage.jsx';
 import LoginPage from './component/LoginPage.jsx';
 import { UserContextProvider } from './UserContext.jsx';
 import { Header } from './Header.jsx';
-import { Meme } from './component/Meme.jsx';
+
 import Shrek from './shrekProfile.JPG'
 
 export default function App() {
