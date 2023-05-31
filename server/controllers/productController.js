@@ -3,9 +3,9 @@ const db = require('../models/itemModel');
 
 // set up the request parameters
 
-const dataController = {};
+const productController = {};
 
-dataController.fetchProducts = async (req, res, next) => {
+productController.fetchProducts = async (req, res, next) => {
   console.log('hello');
   const { category } = req.body;
 
@@ -26,4 +26,4 @@ dataController.fetchProducts = async (req, res, next) => {
   }
 };
 
-module.exports = dataController;
+module.exports = productController;
