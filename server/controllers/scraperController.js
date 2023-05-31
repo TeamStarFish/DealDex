@@ -9,11 +9,14 @@ const header = new Headers({
 
 scraperController.scrape = async (req, res, next) => {
   try {
+
     const resp = await fetch(url, {
       headers: header,
     });
+    
     res.locals.html = await resp.text();
     return next();
+
   } catch (err) {
     return next({
       log: `Error in scraperController.scrape: ${err}`,
