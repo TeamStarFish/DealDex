@@ -52,7 +52,7 @@ export default function Main() {
 
   return (
     <div className='border border-solid border-green-400 flex flex-grow bg-green-100'>
-      <div className='flex flex-col flex-shrink border-solid border border-red-400 w-56'>
+      <div className='flex flex-col flex-shrink w-56 mx-4'>
         <SearchBar
           handleSelect={handleSelect}
           product={product}
@@ -60,7 +60,7 @@ export default function Main() {
           updateFilter={updateFilter}
         />
       </div>
-      <div className='flex flex-grow border-solid border border-red-400'>
+      <div className='flex flex-grow'>
         <ProductList product={product} specs={specs} />
       </div>
     </div>

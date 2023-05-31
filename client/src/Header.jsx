@@ -37,19 +37,20 @@ const LogIn = styled.div`
   border-radius: 5px;
   font-size: 17px;
   font-weight: 600;
-  color: #fff;
-  background-color: #1859c9;
+
+  background-color: #ebd6a5;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   border-radius: 7px;
+  margin-top: 10px;
 `;
 
 const SignUp = styled.div`
   display: flex;
   width: 100px;
   height: 55px;
-  margin-right: 7px;
+  margin-right: 17px;
   border: none;
   border-radius: 5px;
   background-color: #e9ecf0;
@@ -59,7 +60,8 @@ const SignUp = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 7px;
-  padding: 7px;
+  margin-left: 10px;
+  margin-top: 10px;
 `;
 
 export function Header() {
@@ -113,12 +115,14 @@ export function Header() {
           </h1>
         </header>
       </Title>
-      <LogIn>
-        <button>login</button>
-      </LogIn>
-      <SignUp>
-        <button>signup</button>
-      </SignUp>
+      <div className=' flex'>
+        <LogIn>
+          <button className=' inline-block'>login</button>
+        </LogIn>
+        <SignUp>
+          <button>signup</button>
+        </SignUp>
+      </div>
     </div>
   );
 }

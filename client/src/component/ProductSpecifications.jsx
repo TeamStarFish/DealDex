@@ -9,12 +9,17 @@ export default function ProductSpecifications(props) {
   const inputStyle = {
     paddingTop: "0.5rem",
     paddingBottom: "0.5rem",
-    paddingLeft: "1rem",
+    paddingLeft: "0.3rem",
     paddingRight: "1rem",
-    width: "100%",
-    borderRadius: "0.375rem",
+    backgroundColor: "#ffffff",
+    color: "#1F2937",
+    fontWeight: "600",
+    borderRadius: "0.25rem",
     borderWidth: "1px",
-    borderColor: "#D1D5DB",
+    borderColor: "#9CA3AF",
+    boxShadow:
+      "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+    width: "100%",
   };
 
   return (
