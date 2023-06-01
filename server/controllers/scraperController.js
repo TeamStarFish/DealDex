@@ -76,10 +76,10 @@ scraperController.findRelevant = (req, res, next) => {
         title: items[i].querySelector(
           'span.a-size-medium.a-color-base.a-text-normal'
         ).textContent,
-        // Find the rating of the item
-        rating: items[i].querySelector('span.a-icon-alt').textContent,
-        // Find the price of the item
-        price: items[i].querySelector('span.a-offscreen').textContent,
+        // Find the rating of the item and convert it to a Number
+        rating: Number(items[i].querySelector('span.a-icon-alt').textContent.slice(0, 3)),
+        // Find the price of the item and convert it to a Number
+        price: Number(items[i].querySelector('span.a-offscreen').textContent.slice(1)),
         // Assing our bool of if the item is prime eligable or not
         prime: prime,
         // Check if the item mentions it's delivery date, if it does, save it, if it doesnt, 'N/A'
