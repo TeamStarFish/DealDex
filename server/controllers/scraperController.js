@@ -39,17 +39,25 @@ scraperController.findRelevant = (req, res, next) => {
         'div.sg-col.sg-col-0-of-12.sg-col-4-of-16.sg-col-2-of-20.sg-col-2-of-24.puis-padding-right-small'
       );
 
-        const specs = {}
+      const specs = {};
 
       for (let j = 0; j < itemSpecs.length; j++) {
-        specs[itemSpecs[j].querySelector('span.a-color-secondary').textContent] = itemSpecs[j].querySelector('span.a-text-bold').textContent
+        specs[
+          itemSpecs[j].querySelector('span.a-color-secondary').textContent
+        ] = itemSpecs[j].querySelector('span.a-text-bold').textContent;
       }
+
+      const prime = items[i].querySelector('span.aok-relative.s-icon-text-medium.s-prime') ? true : false;
+      // const deliverBy = items[i].querySelector('div.a-row').textContent ? items[i].querySelector('div.a-row').textContent : 'N/A';
 
       res.locals.products.push({
         title: items[i].querySelector(
           'span.a-size-medium.a-color-base.a-text-normal'
         ).textContent,
+        rating: items[i].querySelector('span.a-icon-alt').textContent,
         price: items[i].querySelector('span.a-offscreen').textContent,
+        prime: prime,
+        // deliverBy: deliverBy,
         image: items[i].querySelector('img.s-image').src,
         specs: specs,
       });
