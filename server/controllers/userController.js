@@ -14,7 +14,7 @@ userController.register = async (req, res, next) => {
     });
 
     
-    res.locals.userDoc = userDoc;
+    res.locals.user = userDoc;
     next();
 
   } catch (err) {
@@ -32,25 +32,12 @@ userController.login = async (req, res, next) => {
   try {
     const userDoc = await User.findOne({ username });
     const verified = bcrypt.compareSync(password, userDoc.password);
-    // const verified = //for bcrypt later
 
     if (verified) {
-    //   console.log('verified');
-    //   //logges in with username, id, as `userInfo`***
-    //   jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
-    //     if (err) throw err;
-    //     res.cookie('token', token).json({
-    //       //sending userInfo to login page
-    //       id: userDoc._id,
-    //       username,
-    //       testSend: 'we in here',
-    //     });
-    //   });
     res.locals.user = userDoc;
     next();
-    }
 
-    //need to fill this part.. cookies and jwt..
+    }
 
   } catch (err) {
     return next({
@@ -62,11 +49,43 @@ userController.login = async (req, res, next) => {
 }
 
 userController.addFavorites = async (req, res, next) => {
+  const { favorite } = req.body;
 
+  try {
+
+     const user = await User.findByIdAndUpdate(
+      res.locals.userId,
+      { $push: { favorites: favorite } },
+      { new: true }
+    )
+
+    next();
+
+  } catch (err) {
+    return next({
+      log: 'Error in userController getFavorites',
+      status: 400,
+      message: { err: 'Error in userController getFavorites' }
+    });
+  }
 }
 
 userController.getFavorites = async (req, res, next) => {
-  
+
+  try {
+    const user = await User.findById(res.locals.userId);
+
+    res.locals.favorites = user.favorites;
+
+    next();
+
+  } catch (err) {
+    return next({
+      log: 'Error in userController getFavorites',
+      status: 400,
+      message: { err: 'Error in userController getFavorites' }
+    });
+  }
 }
 
 // userController.profile = async (req, res, next) => {
