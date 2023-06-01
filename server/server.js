@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
-const dotenv = require('dotenv')
+const cookieParser = require("cookie-parser");
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 dotenv.config()
 const PORT = 3000
@@ -12,6 +15,7 @@ const scraperRouter = require('./routes/scraperRouter.js')
 
 const app = express();
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

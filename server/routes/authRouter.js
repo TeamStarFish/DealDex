@@ -2,23 +2,26 @@ const express = require('express');
 const { UNSAFE_NavigationContext } = require('react-router-dom');
 const router = express.Router();
 const userController = require('../controllers/userController')
+const cookieController = require('../controllers/cookieController')
 
 
 
 
-router.post('/register', userController.register, (req, res, next) => {
-  res.status(200).json(res.locals.userDoc)
-})
-
-router.post('/login', userController.login, (req, res, next) => {
+router.post('/register', userController.register, cookieController.create, (req, res, next) => {
   res.status(200).json(res.locals.user)
+  // res.status(200).send('register successful')
 })
 
-router.post('/favorites', userController.addFavorites, (req, res, next) => {
+router.post('/login', userController.login, cookieController.create, (req, res, next) => {
+  res.status(200).json(res.locals.user)
+  // res.status(200).send('login successful')
+})
+
+router.post('/favorites/add', cookieController.verify, userController.addFavorites, (req, res, next) => {
   res.status(200).send('added to favorites')
 })
 
-router.post('/favorites', userController.getFavorites, (req, res, next) => {
+router.post('/favorites/get', cookieController.verify, userController.getFavorites, (req, res, next) => {
   res.status(200).json(res.locals.favorites)
 })
 
