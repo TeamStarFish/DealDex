@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCardSpecs from './ProductCardSpecs.jsx';
+// import ProductCardSpecs from './ProductCardSpecs.jsx';
 
 export default function ProductCard(props) {
   //dummy url for now
@@ -10,33 +10,34 @@ export default function ProductCard(props) {
   // creating key array so we can use map to render the product card specs
   // these show up underneath the product card name, image, and price
   // this is not an ideal method but due for MVP purposes it's what we've got lol
-  let keyArr = [];
-  let results = [];
-  if(specs){
-    keyArr = Object.keys(specs);
-    // filter out the name, price, and category since these are already displayed
-    results = keyArr.filter(ele => ele !== 'img' && ele !== 'category' && ele !== 'price' && ele !== 'productname');
-  }
+  // let keyArr = [];
+  // let results = [];
+  // if(specs){
+  //   keyArr = Object.keys(specs);
+  //   // filter out the name, price, and category since these are already displayed
+  //   results = keyArr.filter(ele => ele !== 'img' && ele !== 'category' && ele !== 'price' && ele !== 'productname');
+  // }
 
   return (
     <div className="h-100 w-100">
       <h1 className="text-center text-[24px]">{name}</h1>
-      <img className="object-scale-down h-64 w-64 block mx-auto"
-        src={imageURL}></img>
-      <p className="text-center text-[20px]">{'$'+ price}</p>
+      <img
+        className="object-scale-down h-64 w-64 block mx-auto"
+        src={imageURL}
+      ></img>
+      <p className="text-center text-[20px]">{'$' + price}</p>
       <div className="grid grid-cols-2 m-4">
-        {results.map((ele, i) => (
+        {/* {results.map((ele, i) => (
           <ProductCardSpecs
             key={results[i]+i} 
             spec={ele}
             specVal={specs[ele]}
           />
-        ))}
+        ))} */}
       </div>
     </div>
   );
 }
-
 
 /*    IDEAS
   NAME OF PRODUCT (MINUS WEIRD ASS TECH SPECS IN TITLE?)
