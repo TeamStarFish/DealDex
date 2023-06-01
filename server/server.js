@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv')
 
+dotenv.config()
 const PORT = 3000
 
 // Router
@@ -47,12 +49,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-
-// Unused stuff?
-// const cors = require('cors');
-// app.use(cors());
-// app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
-
-// const jwt = require('jsonwebtoken');
-// token for jwt later
-// const secret = 'changjunpatrickdocortland';
