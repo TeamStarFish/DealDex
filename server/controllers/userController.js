@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/User')
+const User = require('../models/userModel')
 const userController = {};
 
 
@@ -79,3 +79,8 @@ userController.getFavorites = async (req, res, next) => {
 // }
 
 module.exports = userController;
+
+
+// const jwt = require('jsonwebtoken');
+// token for jwt later
+// const secret = 'changjunpatrickdocortland';
