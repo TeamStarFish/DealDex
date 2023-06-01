@@ -1,5 +1,5 @@
 const { query } = require('express');
-const db = require('../models/itemModel');
+// const db = require('../models/itemModel');
 const data = require("./TEST_DATA");
 
 const productController = {};
@@ -12,7 +12,7 @@ productController.fetchProducts = async (req, res, next) => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '3f1385b474msh5cc468c6c6ca770p1784a6jsne23de33e28ca',
+      'X-RapidAPI-Key': process.env.API_KEY,
       'X-RapidAPI-Host': 'real-time-product-search.p.rapidapi.com'
     }
   };
