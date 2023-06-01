@@ -6,16 +6,19 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "dev": "concurrently \"webpack-dev-server --mode development --open --hot\" \"nodemon ./server/server.js\""
+    "dev": "concurrently \"webpack-dev-server --mode development --open --hot\" \"nodemon ./server/server.js\"",
+    "backend": "nodemon ./server/server.js"
   },
   "keywords": [],
   "author": "Patrick, Chang, Jun, Cortland, Don",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^8.0.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "jsdom": "^22.1.0",
     "mongoose": "^7.2.2",
     "pg": "^8.11.0",
     "postgresql": "^0.0.1",

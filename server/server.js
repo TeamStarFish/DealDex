@@ -1,99 +1,40 @@
 const express = require('express');
 const path = require('path');
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const User = require('./models/User');
 
-// Unused stuff?
-// const cors = require('cors');
-// const jwt = require('jsonwebtoken');
+const PORT = 3000
 
-const salt = bcrypt.genSaltSync(10);
-
-//token for jwt later
-const secret = 'changjunpatrickdocortland';
+// Router
+const apiRouter = require('./routes/apiRouter.js');
+const authRouter = require('./routes/authRouter.js')
+const scraperRouter = require('./routes/scraperRouter.js')
 
 const app = express();
-// app.use(cors());
-// Router
-const apiRouter = require('./routes/api.js');
 
-// app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.resolve(__dirname, '../public'))); //serve public files, images, css etc
+//serve public files, images, css etc
+app.use(express.static(path.resolve(__dirname, '../public')));
 
-//connect to monogoDB commenting out connect so we dont die
-// mongoose.connect(
-//   `mongodb+srv://testingdb:testingdb@cluster0.gs1nz9c.mongodb.net/`
-// );
+// Route Handlers
+app.use('/api', apiRouter);
 
-// Leads us to the route handlers
-app.use('/', apiRouter);
+app.use('/auth', authRouter);
 
-//route to /register
-app.post('/register', async (req, res) => {
-  const { username, password } = req.body;
-  try {
-    const userDoc = await User.create({
-      username: username,
-      password: bcrypt.hashSync(password, salt),
-    });
-    // console.log("here---------" , userDoc)
-    res.json(userDoc);
-  } catch (err) {
-    res.status(400).json(err.message);
-  }
+app.use('/scraper', scraperRouter);
+
+// Catch all
+app.use('*', (req, res) => {
+  console.log("We've entered the catch all");
+  res.status(404).send('Not Found');
 });
 
-// app.post('/login', async (req, res) => {
-//   const { username, password } = req.body;
-//   try {
-//     const userDoc = await User.findOne({ username });
-//     const verified = bcrypt.compareSync(password, userDoc.password);
-//     // const verified = //for bcrypt later
-
-//     if (verified) {
-//       console.log('verified');
-//       //logges in with username, id, as `userInfo`***
-//       jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
-//         if (err) throw err;
-//         res.cookie('token', token).json({
-//           //sending userInfo to login page
-//           id: userDoc._id,
-//           username,
-//           testSend: 'we in here',
-//         });
-//       });
-//     }
-
-//     //need to fill this part.. cookies and jwt..
-//   } catch (err) {
-//     res.status(400).json('wrong password or username');
-//   }
-// });
-
-// app.get('/profile', (req, res) => {
-//   const { token } = req.cookies;
-//   // res.json('ok')
-//   jwt.verify(token, secret, {}, (err, info) => {
-//     if (err) throw err;
-//     res.json(info);
-//   });
-// });
-
-// app.post('/logout', async (req, res) => {
-//   res.cookie('token', '');
-// });
-
-app.use('/', apiRouter);
 // Global error handler
 app.use((err, _req, res, _next) => {
   const defaultErr = {
     log: 'Express global error handler caught unknown middleware error',
-    status: 400,
-    message: { err: 'A global error occurred' },
+    status: 500,
+    message: { err: 'An error occurred' },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
@@ -101,8 +42,17 @@ app.use((err, _req, res, _next) => {
 });
 
 // starts server
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
 
 module.exports = app;
+
+// Unused stuff?
+// const cors = require('cors');
+// app.use(cors());
+// app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+
+// const jwt = require('jsonwebtoken');
+// token for jwt later
+// const secret = 'changjunpatrickdocortland';
