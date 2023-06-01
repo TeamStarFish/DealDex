@@ -6,6 +6,7 @@ const productController = {};
 
 productController.fetchProducts = async (req, res, next) => {
   // const search = req.body.search.replace(/\s/g, "%20");
+  
   const { search } = req.body;
 
   const url = `https://real-time-product-search.p.rapidapi.com/search?q=${search}&country=us&language=en&sort_by=TOP_RATED`;
