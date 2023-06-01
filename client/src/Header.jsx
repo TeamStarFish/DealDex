@@ -1,20 +1,80 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
-import { UserContext } from './UserContext.jsx';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const Title = styled.div`
+  cursor: pointer;
+  text-align: center;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 150ms;
+  transform: translate(-2px, -2px);
+  &:hover {
+    transform: translate(0, 0);
+    box-shadow: 0px 0px;
+  }
+`;
+
+const ButtonNav = styled.div`
+  width: 350px;
+  height: 60px;
+  border: 2px solid #eee;
+  background-color: #b6bdc9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  padding: 7px;
+`;
+
+const LogIn = styled.div`
+  display: flex;
+  width: 100px;
+  height: 55px;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+
+  background-color: #ebd6a5;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  margin-top: 10px;
+`;
+
+const SignUp = styled.div`
+  display: flex;
+  width: 100px;
+  height: 55px;
+  margin-right: 17px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e9ecf0;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-top: 10px;
+`;
 
 export function Header() {
-  const { setUserInfo, userInfo } = useContext(UserContext);
-
   const headerStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   };
-  const loginNavStyle = {
-    marigin: '10px',
-  };
+
+  // const loginNavStyle = {
+  //   marigin: "10px",
+  // };
   //   useEffect(() => {
   //     fetch('/login', {
   //       credentials: 'include',
@@ -25,62 +85,44 @@ export function Header() {
   //     );
   //   }, []);
 
-  function logout() {
-    fetch('/logout', {
-      credentials: 'include',
-      method: 'POST',
-    });
-    setUserInfo(null);
-  }
+  // function logout() {
+  //   fetch('/logout', {
+  //     credentials: 'include',
+  //     method: 'POST',
+  //   });
+  //   setUserInfo(null);
+  // }
 
-  const username = userInfo?.username;
+  // const username = userInfo?.username;
 
   return (
-    <div className="bg-white shadow">
-      <header
-        className="container mx-auto flex justify-between items-center py-2 px-4"
-        style={headerStyle}
-      >
-        <Link to="/" className="text-2xl font-bold text-gray-800">
-          <img
-            className="object-scale-down h-11"
-            src="https://i.ibb.co/2gxfCKh/owen.png"
-            id="owen"
-            alt="owen"
-            border="0"
-          />
-        </Link>
-        <nav className="space-x-4">
-          {/* if username  */}
-          {username && (
-            <>
-              <Link to="/meme" className="text-gray-800 hover:text-blue-500">
-                Meme
-              </Link>
-              <a
-                href=""
-                className="text-gray-800 hover:text-blue-500"
-                onClick={logout}
-              >
-                Logout
-              </a>
-            </>
-          )}
-          {!username && (
-            <>
-              <Link className="text-gray-800 hover:text-blue-500" to="/login">
-                Login
-              </Link>
-              <Link
-                className="text-gray-800 hover:text-blue-500"
-                to="/register"
-              >
-                Register
-              </Link>
-            </>
-          )}
-        </nav>
-      </header>
+    <div className='bg-white shadow flex justify-between'>
+      <Title>
+        <header className='flex py-4 ml-4 w-13'>
+          <Link to='/' className='mt-1.5'>
+            <img
+              className='object-scale-down h-11'
+              src='https://i.ibb.co/2gxfCKh/owen.png'
+              id='owen'
+              alt='owen'
+              border='0'
+            />
+          </Link>
+          <h1
+            className='container flex justify-between items-center py-1 px-1 font-montserrat text-3xl font-bold'
+            font-montserrat>
+            DealDex
+          </h1>
+        </header>
+      </Title>
+      <div className=' flex'>
+        <LogIn>
+          <button className=' inline-block'>login</button>
+        </LogIn>
+        <SignUp>
+          <button>signup</button>
+        </SignUp>
+      </div>
     </div>
   );
 }
