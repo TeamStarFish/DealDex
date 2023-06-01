@@ -109,4 +109,45 @@ npm run startBoth
       <a href="https://www.linkedin.com/in/patrickqvuong/">LinkedIn</a>
     </td>
   </tr>
+  <tr>
+    <td>
+      <img src="" style="width:6rem;" />
+    </td>
+    <td>
+      <strong>Alan Back</strong><br/>
+      <a href="">GitHub</a><br/>
+      <a href="">LinkedIn</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="" style="width:6rem;" />
+    </td>
+    <td>
+      <strong>Jeremy Chen</strong><br/>
+      <a href="">GitHub</a><br/>
+      <a href="">LinkedIn</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="" style="width:6rem;" />
+    </td>
+    <td>
+      <strong>Josh Goo</strong><br/>
+      <a href="">GitHub</a><br/>
+      <a href="">LinkedIn</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://imgtr.ee/images/2023/06/01/SSsOs.jpg" style="width:6rem;height:6rem" />
+    </td>
+    <td>
+      <strong>Trey Walker</strong><br/>
+      <a href="https://github.com/kasualkid12">GitHub</a><br/>
+      <a href="https://www.linkedin.com/in/kasualkid12/">LinkedIn</a>
+    </td>
+  </tr>
+  <tr>
 </table>

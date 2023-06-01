@@ -76,6 +76,7 @@ scraperController.findRelevant = (req, res, next) => {
         title: items[i].querySelector(
           'span.a-size-medium.a-color-base.a-text-normal'
         ).textContent,
+        // Find link to item
         link:
           'https:www.amazon.com' +
           items[i]
