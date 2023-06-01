@@ -20,6 +20,7 @@ scraperController.scrape = async (req, res, next) => {
     res.locals.html = await resp.text();
     // Go to next middleware
     return next();
+
   } catch (err) {
     // If an error occurs send to our global error handler
     return next({
