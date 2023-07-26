@@ -87,6 +87,7 @@ npm run startBoth
     <td>
       <strong>Don Do</strong><br/>
       <a href="https://github.com/Donlebon">GitHub</a><br/>
+      <a href="https://www.linkedin.com/in/donddo/">LinkedIn</a>
     </td>
   </tr>
   <tr>
